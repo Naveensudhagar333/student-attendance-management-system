@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Login | Attendance System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="/mnt/data/Screenshot 2025-11-20 142900.png" class="logo" alt="logo" />
+      <h1>Attendance System</h1>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="login-card">
+      <h2>Sign In</h2>
+
+      <div class="role-row">
+        <label><input type="radio" name="role" value="admin" checked> Admin</label>
+        <label><input type="radio" name="role" value="teacher"> Teacher</label>
+      </div>
+
+      <input id="username" placeholder="Username" />
+      <input id="password" placeholder="Password" type="password" />
+      <button onclick="login()">Login</button>
+
+      <p class="hint">Admin: <b>admin</b>/<b>admin123</b> • Teacher: <b>teacher</b>/<b>teach123</b></p>
+      <p class="hint">Tip: Admin can add classes, students, download backups.</p>
+    </div>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

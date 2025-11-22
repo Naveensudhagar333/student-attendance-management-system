@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Reports | Attendance System</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="/mnt/data/Screenshot 2025-11-20 142900.png" class="nav-logo" alt="logo" />
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="attendance.html" class="nav-link">Attendance</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="settings.html" class="nav-link">Settings</a>
+    </div>
+    <div class="nav-right">
+      <a href="login.html" class="btn small">Logout</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Reports</h2>
+    <div>
+      <label>Class: <select id="rClass" onchange="buildReports()"></select></label>
+      <label>From: <input type="date" id="rFrom" onchange="buildReports()" /></label>
+      <label>To: <input type="date" id="rTo" onchange="buildReports()" /></label>
+    </div>
+
+    <h3>Monthly Summary</h3>
+    <canvas id="repChart" height="120"></canvas>
+
+    <div id="reportTableWrap" class="table-wrap"></div>
+  </div>
+
+<script src="utils.js"></script>
+<script src="reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Attendance | Attendance System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="/mnt/data/Screenshot 2025-11-20 142900.png" class="nav-logo" alt="logo" />
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="attendance.html" class="nav-link">Attendance</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="settings.html" class="nav-link">Settings</a>
+    </div>
+
+    <div class="nav-right">
+      <select id="classSelectAtt" onchange="changeClassAtt()"></select>
+      <input type="date" id="attDate" onchange="loadAttendance()" />
+      <button class="btn small" onclick="markAllPresent()">Mark All Present</button>
+      <button class="btn small" onclick="exportCSV()">Export CSV</button>
+      <button class="btn small" onclick="printAttendance()">Print</button>
+      <a href="login.html" class="btn small">Logout</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Mark Attendance</h2>
+    <div class="table-wrap">
+      <table id="attTable">
+        <thead><tr><th>Roll</th><th>Name</th><th>Present</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="attendance.js"></script>
+</body>
+</html>

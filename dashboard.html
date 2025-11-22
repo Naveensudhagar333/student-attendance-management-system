@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard | Attendance System</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="/mnt/data/Screenshot 2025-11-20 142900.png" class="nav-logo" alt="logo" />
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="attendance.html" class="nav-link">Attendance</a>
+      <a href="reports.html" class="nav-link">Reports</a>
+      <a href="settings.html" class="nav-link">Settings</a>
+    </div>
+
+    <div class="nav-right">
+      <select id="classSelect" onchange="changeClass()"></select>
+      <button class="btn small" onclick="openAddClass()">+ Class</button>
+      <button class="btn small" id="themeToggle" onclick="toggleTheme()">🌙</button>
+      <div class="profile" onclick="toggleProfile()">
+        <div class="avatar" id="avatarInitial">A</div>
+        <div id="profileMenu" class="profile-menu hide"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cards">
+      <div class="card" id="cardTotal">
+        <div class="card-title">Total Students</div>
+        <div class="card-value" id="totalStudents">0</div>
+      </div>
+      <div class="card" id="cardPresent">
+        <div class="card-title">Present Today</div>
+        <div class="card-value" id="presentToday">0</div>
+      </div>
+      <div class="card" id="cardAbsent">
+        <div class="card-title">Absent Today</div>
+        <div class="card-value" id="absentToday">0</div>
+      </div>
+      <div class="card" id="cardPercent">
+        <div class="card-title">Attendance %</div>
+        <div class="card-value" id="attPercent">0%</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input id="search" placeholder="Search name or roll" oninput="searchStudent()" />
+      <div class="add-row">
+        <input id="sName" placeholder="Student name" />
+        <input id="sRoll" placeholder="Roll" />
+        <input type="file" id="sPhoto" accept="image/*" />
+        <button class="btn" onclick="addStudent()">Add</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="studentTable">
+        <thead>
+          <tr><th>Roll</th><th>Name</th><th>Photo</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:18px">Attendance Trend (last 7 days)</h3>
+    <canvas id="attChart" height="100"></canvas>
+
+    <div style="margin-top:14px">
+      <button class="btn" onclick="printStudents()">Print Students</button>
+      <button class="btn" onclick="exportStudentsCSV()">Export CSV</button>
+      <button class="btn" onclick="exportFullBackup()">Export Backup (JSON)</button>
+      <button class="btn" onclick="openImportModal()">Import Backup</button>
+      <button class="btn" onclick="openQRScanner()">QR Scan</button>
+      <button class="btn" onclick="voiceTest()">Voice Test</button>
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div id="modal" class="modal hide">
+    <div class="modal-card">
+      <h3 id="modalTitle">Modal</h3>
+      <div id="modalBody"></div>
+      <div class="modal-actions">
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- qr scanner overlay -->
+  <div id="qrLayer" class="modal hide">
+    <div class="modal-card">
+      <h3>QR Scanner</h3>
+      <video id="qrVideo" style="width:100%"></video>
+      <div style="margin-top:10px">
+        <button onclick="closeQRScanner()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="dashboard.js"></script>
+  <!-- jsQR (for QR processing) -->
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+</body>
+</html>

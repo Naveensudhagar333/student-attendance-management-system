@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Settings | Attendance System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="/mnt/data/Screenshot 2025-11-20 142900.png" class="nav-logo" alt="logo" />
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="attendance.html" class="nav-link">Attendance</a>
+    </div>
+    <div class="nav-right">
+      <a href="login.html" class="btn small">Logout</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Settings</h2>
+    <div class="table-wrap">
+      <h3>Auto-Fill Rules</h3>
+      <label>Auto-mark present if present for last <input id="autoConsecutive" type="number" value="10" style="width:70px"> days</label>
+      <div style="margin-top:10px"><button onclick="saveSettings()">Save</button></div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:12px">
+      <h3>Reset / Cleanup</h3>
+      <button onclick="clearAll()">Reset All Data (danger)</button>
+    </div>
+  </div>
+
+<script>
+function saveSettings(){
+  const v = document.getElementById("autoConsecutive").value;
+  localStorage.setItem("autoConsec", v);
+  alert("Saved");
+}
+function clearAll(){
+  if(confirm("Clear all local data? This cannot be undone.")){
+    localStorage.removeItem("classes");
+    localStorage.removeItem("attendance");
+    alert("Cleared. Reloading to demo state.");
+    location.reload();
+  }
+}
+</script>
+</body>
+</html>
